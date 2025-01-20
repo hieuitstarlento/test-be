@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { AppService } from './app.service';
 
@@ -7,16 +7,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get("hello")
-  hello(req: Request) {
-    const rs = req;
+  hello(@Req() req: Request) {
     console.log(req);
-    return rs as any;
   }
 
   @Post("test")
-  test(req: Request) {
-    const rs = req;
+  test(@Req() req: Request) {
     console.log(req);
-    return rs as any;
   }
 }
